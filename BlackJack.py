@@ -1,6 +1,7 @@
 import random
 
 #Función para añadir cartas a la baraja:
+#"baraja", es el vector donde se acumulan los resultados de la adición de cada palo.
 #"palo", es un caracter unicode. (corazón, pica, trebol, diamante)
 #"números", es el vector de posibilidades para el palo.
 
@@ -33,7 +34,7 @@ def Barajar(baraja):
 #"baraja", es el vector que contiene todas las cartas.
 #"jugador", es el vector de cartas propio del jugador.
 
-#La función asigna una carta del principio de la baraja al "jugador" extrañendola de la "baraja".
+#La función asigna una carta del principio de la baraja al "jugador" extrayendola de la "baraja".
 def DarCarta(baraja, jugador):
     jugador.append(baraja.pop())   
     return jugador[-1]
@@ -133,13 +134,12 @@ def Ventiuna(nombreJugador, baraja, casa, jugador):
     print("La Casa: {:>7}   *".format(casa[0], casa[1]))
     print("{:>7}: {:>7}{:>7}".format(nombreJugador, jugador[0], jugador[1]))
 
-    Turno(baraja,jugador,nombreJugador)
+    Turno(nombreJugador,baraja,jugador)
 
     if(Total(jugador) <= 21):
         while Total(casa) < 17:           
             print ("La Casa obtuvo {:>7}".format(DarCarta(baraja,casa)))
             print("total: {:>7}".format(Total(casa)))
-
             if Total(casa) > 21:
                 print("La Casa se paso")   
                 print("-----")             
